@@ -11,6 +11,8 @@ class UsersController extends Controller
     //
     public function index(Request $request){
         $user = Auth::user();
-        return view('blog.index', ['item' => $user]);
+        $items = User::all();
+        $param = ['user' => $user, 'items' => $items];
+        return view('blog.index', $param);
     }
 }
