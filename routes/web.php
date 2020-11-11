@@ -22,4 +22,4 @@ Route::get('/blog', 'UsersController@index');
 Route::get('/post', 'PostsController@index');
 Route::get('/post/add', 'PostsController@add');
 Route::post('/post/add', 'PostsController@create');
-
+Route::get('/post/{id}/show', 'PostsController@show')->name('show');

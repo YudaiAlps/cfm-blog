@@ -1,13 +1,19 @@
-<form action="/post/add" method='post'>
+@if(Auth::check())
+<form action="/post/add" method='post' enctype="multipart/form-data">
   <table>
     @csrf
+      <input type="hidden" name='user_id' value='{{ $user->id }}'>
     <tr>
-      <th>post id:</th>
-      <td><input type="text" name='post_id' value='{{ old("post_id") }}'></td>
+      <th>title</th>
+      <td><input type="text" name='title' value='{{old("title")}}'></td>
     </tr>
     <tr>
       <th>content:</th>
-      <td><input type="text" name='content' value='{{ old("content") }}'></td>
+      <td><textarea name="content" cols="30" rows="10" >{{ old('content') }}</textarea></td>
+    </tr>
+    <tr>
+      <th>photographs:</th>
+      <td><input type="file" name='image'></td>
     </tr>
     <tr>
       <th>category:</th>
@@ -19,3 +25,6 @@
     </tr>
   </table>
 </form>
+@else
+<p>ログインしてください（<a href='/login'>ログイン</a>|<a href="/register">登録</a>）</p>
+@endif

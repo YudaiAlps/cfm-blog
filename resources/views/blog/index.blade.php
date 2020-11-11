@@ -1,28 +1,29 @@
 @if(Auth::check())
-<p>ここはindexページです</p>
+<p>ここはマイページです</p>
 
 <table>
+<caption>会員情報</caption>
 <tr>
-  <th>user</th>
-  <th>post</th>
+  <th>name</th>
+  <td>{{$item->name}}</td>
 </tr>
-@foreach($items as $item)
 <tr>
-  <td>{{$item->getData()}}</td>
-  <td>
-    @if ($item->post != null)
-    <table>
-      @foreach($item->posts as $obj)
-        <tr>
-          <td>{{$obj->getData()}}</td>
-        </tr>
-      @endforeach
-    </table>
-    @endif
-  </td>
+  <th>email</th>
+  <td>{{$item->email}}</td>
 </tr>
-@endforeach
 </table>
+
+<table>
+  <caption>あなたの投稿</caption>
+  @if($item->posts != null)
+    @foreach($item->posts as $obj)
+      <tr><td><a href="{{ route('show', ['id' => $obj->id]) }}">{{ $obj->getData() }}</a></td></tr>
+    @endforeach
+  @endif
+</table>
+
+<a href="/post">一覧へ</a>
+<a href="/post/add">投稿ページへ</a>
 
 @else
 <p>ログインしてください（<a href='/login'>ログイン</a>|<a href="/register">登録</a>）</p>
