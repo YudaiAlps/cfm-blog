@@ -8,7 +8,16 @@
 
 <p>{{ $item->category }}</p>
 
+{{$item->id}}
+
 <img src="../../../uploads/{{ $item->image}}" alt="" style='width:100px;'>
+<form action="{{ action('PostsController@destroy', $item->id)}}" method='POST'>
+      <input type="hidden" value='{{$item->id}}'>
+      {{ csrf_field()}}
+      {{method_field('delete')}}
+      <input type="submit" value='削除'>
+    </form>
+
 <a href="/post">一覧へ戻る</a>
 
 @else

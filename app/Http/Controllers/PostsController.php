@@ -15,15 +15,31 @@ class PostsController extends Controller
         $this->middleware('auth')->except(['index']);
     }
     public function index(Request $request){
-        $items = Post::all();
+        $keyword = $request->keyword;
+        $title = $request->title_key;
+
+        
+        if(empty($title) && empty($keyword)){
+            $items = Post::all();
+        } else {
+            $query = Post::query();
+            if(!empty('title')){
+                $query->where('title', 'LIKE', "%{$title}%");
+            }
+            if(!empty('keyword')){
+                $query->where('content', 'LIKE', "%{$keyword}%");
+            }
+
+            $items = $query->get();
+        }
+        
+        
         return view('post.index', ['items' => $items]);
     }
 
-    public function show(User $user){
-        $id = User::find($user->id);
-        // $item = Post::where('user_id', $user->id)->first();
-        $item = Post::all();
-        return view('post.show', ['item' => $item, 'user' => $id]);
+    public function show($id){
+        $item = Post::where('id', $id)->first();
+        return view('post.show', ['item' => $item]);
     }
 
     public function add(Request $request){
@@ -41,11 +57,23 @@ class PostsController extends Controller
         $post = new Post;
         $post->title = $request->title;
         $post->content = $request->content;
-        $post->image = $fileName;
+        if(!empty($fileName)){
+            $post->image = $fileName;
+        }else{
+            $post->image = null;
+        }
+        
         $post->category = $request->category;
         $post->user_id = $id;
 
         $post->save();
+
+        return redirect('/post');
+    }
+
+    public function destroy($id){
+        $post = Post::find($id);
+        $post->delete();
 
         return redirect('/post');
     }
