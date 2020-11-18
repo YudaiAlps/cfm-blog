@@ -2,7 +2,7 @@
 
 @section('content')
 @if(Auth::check())
-
+<div class='show'>
 <h1>詳細ページ</h1>
 
 <h2>{{ $item->title}}</h2>
@@ -21,7 +21,8 @@
       <input type="submit" value='削除'>
     </form>
 
-<a href="/">一覧へ戻る</a>
+<a href="/" class='btn'>一覧へ戻る</a>
+</div>
 
 @else
 <p>ログインしてください（<a href='/login'>ログイン</a>|<a href="/register">登録</a>）</p>
