@@ -1,4 +1,8 @@
 @if(Auth::check())
+@extends('layouts.app')
+
+@section('content')
+
 <p>ここはマイページです</p>
 
 <table>
@@ -22,9 +26,10 @@
   @endif
 </table>
 
-<a href="/post">一覧へ</a>
+<a href="/">一覧へ</a>
 <a href="/post/add">投稿ページへ</a>
 
 @else
 <p>ログインしてください（<a href='/login'>ログイン</a>|<a href="/register">登録</a>）</p>
 @endif
+@endsection
