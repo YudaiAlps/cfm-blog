@@ -1,0 +1,99 @@
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+ul,
+ol,
+li,
+dl,
+dt,
+dd {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background: #fff;
+    text-align: left;
+    font-size: 16px;
+    line-height: 1.4;
+    min-width: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    outline: none;
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    border: 0px;
+    vertical-align: bottom;
+}
+
+/* --------------------------------------------------- */
+.navbar {
+    margin: 0 auto;
+    width: 300px;
+}
+
+.post {
+    margin: 0 auto;
+    width: 300px;
+}
+
+.wrap {
+    width: 300px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.my-info {
+    padding: 20px;
+}
+
+.my-info h1 {
+    color: #0066FF;
+}
+
+.my-post {
+    padding: 20px;
+    background-color: aquamarine;
+}
+
+.my-info,
+.my-post caption {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.post-item {
+    border-bottom: 1px solid #ff0;
+}
+
+.btn {
+    display: inline-block;
+    background-color: cadetblue;
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+.show {
+    margin: 0 auto;
+    width: 300px;
+    text-align: left;
+}
