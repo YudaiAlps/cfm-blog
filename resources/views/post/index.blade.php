@@ -1,10 +1,12 @@
+@extends('layouts.app')
+
+@section('content')
 <h1>検索</h1>
-<form action="{{url('/post')}}" method='get'>
-  <p>title：<input type="text" name='title_key'></p>
-  <p>content：<input type="text" name='keyword'></p>
+<form action="{{url('/')}}" method='get'>
+  <p>キーワード：<input type="text" name='keyword'></p>
   <input type="submit" value="search">
 </form>
-<a href="/post">リセット</a>
+<a href="/">リセット</a>
 <table>
 <tr>
   <th>Data</th>
@@ -12,7 +14,13 @@
 @foreach($items as $item)
 <tr>
   <td><a href="{{ route('show', ['id'=>$item->id])}}">{{$item->getData()}}</a></td>
-  <td>{{$item->id}}</td>
+</tr>
+<tr>
+  <td>{{$item->content}}</td>
+</tr>
+<tr>
+  <td>{{$item->created_at}}</td>
+    
   <td> 
     <form action="{{ action('PostsController@destroy', $item->id)}}" method='POST'>
       <input type="hidden" value='{{$item->id}}'>
@@ -28,5 +36,7 @@
 
 
 
-<a href="/blog">マイページへ</a>
+<a href="/mypage">マイページへ</a>
 <a href="/post/add">投稿ページへ</a>
+
+@endsection

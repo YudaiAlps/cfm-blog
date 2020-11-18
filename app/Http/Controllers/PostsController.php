@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\PostRequest;
 
 class PostsController extends Controller
 {
@@ -16,22 +17,14 @@ class PostsController extends Controller
     }
     public function index(Request $request){
         $keyword = $request->keyword;
-        $title = $request->title_key;
 
-        
-        if(empty($title) && empty($keyword)){
-            $items = Post::all();
-        } else {
-            $query = Post::query();
-            if(!empty('title')){
-                $query->where('title', 'LIKE', "%{$title}%");
-            }
-            if(!empty('keyword')){
-                $query->where('content', 'LIKE', "%{$keyword}%");
-            }
+        $query = Post::query();
 
-            $items = $query->get();
+        if(!empty($keyword)){
+            $query->where('title', 'LIKE', "%{$keyword}%")->orWhere('content', 'LIKE', "%{$keyword}%")->orWhere('category', 'LIKE', "%{$keyword}%");
         }
+
+        $items = $query->get();
         
         
         return view('post.index', ['items' => $items]);
@@ -47,7 +40,11 @@ class PostsController extends Controller
         return view('post.add', ['user'=>$user]);
     }
 
-    public function create(Request $request){
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function create(PostRequest $request){
         if($file = $request->image){
             $fileName = time(). $file->getClientOriginalName();
             $target_path = public_path('uploads/');
@@ -57,6 +54,7 @@ class PostsController extends Controller
         $post = new Post;
         $post->title = $request->title;
         $post->content = $request->content;
+        
         if(!empty($fileName)){
             $post->image = $fileName;
         }else{
@@ -68,11 +66,12 @@ class PostsController extends Controller
 
         $post->save();
 
-        return redirect('/post');
+        return redirect('/');
     }
 
     public function destroy($id){
-        $post = Post::find($id);
+        $id = (int)$id;
+        $post = Post::where('id', $id)->first();
         $post->delete();
 
         return redirect('/post');

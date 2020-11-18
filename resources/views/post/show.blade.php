@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
 @if(Auth::check())
 
 <h1>詳細ページ</h1>
@@ -18,8 +21,9 @@
       <input type="submit" value='削除'>
     </form>
 
-<a href="/post">一覧へ戻る</a>
+<a href="/">一覧へ戻る</a>
 
 @else
 <p>ログインしてください（<a href='/login'>ログイン</a>|<a href="/register">登録</a>）</p>
 @endif
+@endsection

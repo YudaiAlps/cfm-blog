@@ -11,15 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Auth::routes();
-
+Route::get('/', 'PostsController@index');
+Route::get('/', 'PostsController@index');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/blog', 'UsersController@index');
-Route::get('/post', 'PostsController@index');
+Route::get('/mypage', 'UsersController@index');
+
 Route::get('/post/add', 'PostsController@add');
 Route::post('/post/add', 'PostsController@create');
 Route::get('/post/{id}/show', 'PostsController@show')->name('show');
