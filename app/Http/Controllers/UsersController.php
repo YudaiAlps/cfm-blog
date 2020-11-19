@@ -11,9 +11,14 @@ class UsersController extends Controller
     //
     public function index(Request $request){
         $user = Auth::user();
-        $user_id = Auth::user()->id;
-        $item = User::where('id', $user_id)->first();
-        $param = ['user' => $user, 'item' => $item];
-        return view('blog.index', $param);
+        if(empty($user)){
+            return redirect('/login');
+        }else{
+            $user_id = Auth::user()->id;
+            $item = User::where('id', $user_id)->first();
+            $param = ['user' => $user, 'item' => $item];
+            return view('blog.index', $param);
+        }
+      
     }
 }

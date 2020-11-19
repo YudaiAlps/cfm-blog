@@ -24,8 +24,8 @@
       <caption>あなたの投稿</caption>
       @if($item->posts != null)
         @foreach($item->posts as $obj)
-          <tr><td><a href="{{ route('show', ['id' => $obj->id]) }}">{{ $obj->getData() }}</a></td></tr>
-          <tr class='post-item'>
+          <tr class='post-item'><td><a href="{{ route('show', ['id' => $obj->id]) }}">{{ $obj->getData() }}</a></td>
+          
             <td>{{$obj->content}}</td>
           </tr>
         @endforeach
