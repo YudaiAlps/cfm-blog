@@ -40,21 +40,39 @@ img {
 }
 
 /* --------------------------------------------------- */
+#app {
+    width: 30%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.navbar-brand {
+    margin-top: 10px;
+    font-size: 24px;
+}
+
+.nav-item {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-top: 10px;
+}
+
+.nav-item a {
+    padding-right: 10px;
+}
+
+.container {
+
+    margin: 0 auto;
+    text-align: left;
+    width: 100%;
+}
+
 .navbar {
     margin: 0 auto;
     width: 300px;
 }
 
-.post {
-    margin: 0 auto;
-    width: 300px;
-}
-
-.wrap {
-    width: 300px;
-    margin: 0 auto;
-    text-align: left;
-}
 
 .my-info {
     padding: 20px;
@@ -91,9 +109,9 @@ img {
 }
 
 .show {
-    margin: 0 auto;
-    width: 300px;
+    margin: 20px auto;
     text-align: left;
+    width: 80%;
 }
 
 .post-item {
@@ -107,22 +125,27 @@ img {
 }
 
 .title {
-    font-size: 18px;
+    font-size: 16px;
     width: 100%;
 }
 
 .content {
     width: 100%;
+    font-size: 24px;
 }
 
 .time {
     width: 100%;
     margin-right: 20px;
+    font-size: 11px;
 }
 
 .post-table {
     padding: 10px;
     background-color: skyblue;
+    margin-bottom: 20px;
+    width: 50%;
+    min-width: 765px;
 }
 
 .search {
@@ -137,6 +160,33 @@ img {
 
 .delete {
     position: absolute;
-    right: 20px;
+    right: 10px;
     bottom: 0;
+    width: 40px;
+    font-size: 10px;
+}
+
+.keyword {
+    margin-bottom: 10px;
+}
+
+.search {
+    font-size: 18px;
+}
+
+.reset {
+    font-size: 10px;
+}
+
+.add {
+    margin-top: 20px;
+}
+
+.detail {
+    margin-top: 10px;
+}
+
+.show li {
+    display: flex;
+    justify-content: space-between;
 }

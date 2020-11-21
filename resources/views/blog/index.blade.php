@@ -2,7 +2,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class='wrap'>
+<div class='container'>
   <div class='my-info'>
     <h1>Mypage</h1>
 
@@ -19,7 +19,7 @@
     </table>
   </div>
 
-  <div class='my-post'>
+  <div class='post-table'>
     <table>
       <caption>あなたの投稿</caption>
       @if($item->posts != null)

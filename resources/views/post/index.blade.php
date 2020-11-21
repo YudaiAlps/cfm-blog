@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<div class='post'>
+<div class='container'>
   <div class="search">
     <h1>検索</h1>
     <form action="{{url('/')}}" method='get'>
-      <p>キーワード：<input type="text" name='keyword'></p>
-      <input type="submit" value="search" class='btn'>
+      <p class='keyword'>キーワード：<input type="text" name='keyword'></p>
+      <input type="submit" value="search" class='btn search'>
     </form>
-    <a href="/" class='btn'>リセット</a>
+    <a href="/" class='btn reset'>リセット</a>
   </div>
   <table class='post-table'>
   <tr>
