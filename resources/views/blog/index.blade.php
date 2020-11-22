@@ -9,11 +9,11 @@
     <table>
     <caption>会員情報</caption>
     <tr>
-      <th>name</th>
+      <td>名前：</td>
       <td>{{$item->name}}</td>
     </tr>
     <tr>
-      <th>email</th>
+      <td>メールアドレス：</td>
       <td>{{$item->email}}</td>
     </tr>
     </table>
