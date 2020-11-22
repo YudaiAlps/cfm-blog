@@ -23,4 +23,3 @@ Route::get('/post/add', 'PostsController@add');
 Route::post('/post/add', 'PostsController@create');
 Route::get('/post/{id}/show', 'PostsController@show')->name('show');
 Route::delete('/post/{id}', 'PostsController@destroy');
-Route::resource('post', 'ComController', ['only' => ['destroy']]);

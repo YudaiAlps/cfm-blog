@@ -70,10 +70,8 @@ class PostsController extends Controller
     }
 
     public function destroy($id){
-        $id = (int)$id;
-        $post = Post::where('id', $id)->first();
+        $post = Post::find($id);
         $post->delete();
-
-        return redirect('/post');
+        return redirect('/');
     }
 }

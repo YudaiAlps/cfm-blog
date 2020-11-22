@@ -2,28 +2,32 @@
 
 @section('content')
 @if(Auth::check())
-<div class='show'>
-<h1>詳細ページ</h1>
+<div class='container'>
+  <div class='show'>
+  <h1>詳細ページ</h1>
 
-<h2>{{ $item->title}}</h2>
+  <h2 class='title'>{{ $item->title}}</h2>
 
-<p>{{ $item->content}}</p>
+  <p class='content detail'>{{ $item->content}}</p>
 
-<p>{{ $item->category }}</p>
+  <p>{{ $item->category }}</p>
 
-{{$item->id}}
+  <p>{{$item->created_at}}</p>
 
-<img src="../../../uploads/{{ $item->image}}" alt="" style='width:100px;'>
-<form action="{{ action('PostsController@destroy', $item->id)}}" method='POST'>
-      <input type="hidden" value='{{$item->id}}'>
-      {{ csrf_field()}}
-      {{method_field('delete')}}
-      <input type="submit" value='削除'>
-    </form>
+  <img src="../../../uploads/{{ $item->image}}" alt="" style='width:100px;'>
 
-<a href="/" class='btn'>一覧へ戻る</a>
+  <li>
+    <form action="{{ url('post/'. $item->id)}}" method='POST'>
+        @csrf
+        @method('DELETE')
+        <input type="submit" value='削除' class='btn'>
+      </form>
+
+    <a href="/" class='btn'>一覧へ戻る</a>
+  </li>
+    
+  </div>
 </div>
-
 @else
 <p>ログインしてください（<a href='/login'>ログイン</a>|<a href="/register">登録</a>）</p>
 @endif
