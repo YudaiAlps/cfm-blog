@@ -92,6 +92,10 @@ return [
     |
     */
 
+    /**
+     * パスワードをリセットするときの時間を設定
+     */
+
     'passwords' => [
         'users' => [
             'provider' => 'users',

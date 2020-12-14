@@ -1,7 +1,8 @@
+@if(Auth::check())
+
 @extends('layouts.app')
 
 @section('content')
-@if(Auth::check())
 <div class='container'>
   <div class='add'>
     @if(count($errors) > 0)

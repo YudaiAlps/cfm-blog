@@ -15,6 +15,7 @@ class User extends Authenticatable
      *
      * @var array
      */
+    // 必須入力項目を指定
     protected $fillable = [
         'name', 'email', 'password',
     ];
@@ -24,6 +25,7 @@ class User extends Authenticatable
      *
      * @var array
      */
+    // 隠したいアトリビュートを指定する
     protected $hidden = [
         'password', 'remember_token',
     ];
@@ -33,10 +35,12 @@ class User extends Authenticatable
      *
      * @var array
      */
+    // データを自動変換する変数
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
 
+    // 1対多のリレーションを設定
     public function posts(){
         return $this->hasMany('App\Post');
     }
