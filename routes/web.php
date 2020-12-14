@@ -22,4 +22,5 @@ Route::get('/mypage', 'UsersController@index');
 Route::get('/post/add', 'PostsController@add');
 Route::post('/post/add', 'PostsController@create');
 Route::get('/post/{id}/show', 'PostsController@show')->name('show');
+Route::post('/post/{id}/show', 'PostsController@reply')->name('show');
 Route::delete('/post/{id}', 'PostsController@destroy');
